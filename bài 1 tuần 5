@@ -1,0 +1,22 @@
+
+def sort_colors(colors):
+    # Mã hóa: 0 -> đỏ, 1 -> trắng, 2 -> xanh
+    low, mid, high = 0, 0, len(colors) - 1
+
+    while mid <= high:
+        if colors[mid] == 0:  # Màu đỏ
+            colors[low], colors[mid] = colors[mid], colors[low]
+            low += 1
+            mid += 1
+        elif colors[mid] == 1:  # Màu trắng
+            mid += 1
+        else:  # Màu xanh
+            colors[mid], colors[high] = colors[high], colors[mid]
+            high -= 1
+
+# Dữ liệu đầu vào
+input_colors = [2, 0, 2, 0, 0, 1, 0, 2, 1]
+# Gọi hàm sắp xếp
+sort_colors(input_colors)
+# In kết quả
+print([0 if x == 0 else 1 if x == 1 else 2 for x in input_colors])  # In ra màu sắc tương ứng
